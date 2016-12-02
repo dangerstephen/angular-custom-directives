@@ -1,7 +1,10 @@
 angular
   .module('CardsAgainstAssembly', [])
   .controller('CardsController', CardsController)
-  .controller('PlayersController', PlayersController);
+  .controller('PlayersController', PlayersController)
+  .directive('card', CardViewDirective)
+  .directive('scores', ScoreViewDirective);
+
 
 function CardsController() {
   var vm = this;
@@ -15,14 +18,48 @@ function CardsController() {
   ];
 }
 
+function CardViewDirective(){
+  var directive = {
+    restrict: 'E',
+    replace: true,
+    templateUrl: './templates/cardView.html',
+    scope : {
+        question: '@'
+    }
+  };
+  return directive;
+}
+
 function PlayersController(){
   var vm = this;
   vm.players = [
-    {name: 'Gilligan', points: 2},
-    {name: 'Mary Ann', points: 16},
-    {name: 'Ginger', points: 12},
-    {name: 'Thurson', points: 6},
-    {name: 'Skipper', points: 9},
-    {name: 'The Professor', points: 21}
+    {name: 'Kevin', points: 2},
+    {name: 'Kyle', points: 16},
+    {name: 'Martin', points: 12},
+    {name: 'Yasu', points: 6},
+    {name: 'Derry', points: 9},
+    {name: 'Sophie', points: 21}
   ];
+}
+
+function ScoreViewDirective(){
+  var directive = {
+    restrict: 'E',
+    replace: true,
+    templateUrl: './templates/scoreView.html'
+
+  };
+  return directive;
+}
+
+function ScoresDirective(){
+  var directive = {
+    controller: PlayersController,
+    controllerAs: 'vm',
+    //'A' == attribute, 'E' == element, 'C' == class, 'M' == comment
+    restrict : 'E',
+    replace : true,
+    templateUrl :  "./templates/_scoresView.html"
+  };
+  return directive;
 }

@@ -12,16 +12,23 @@ header {
   border-bottom: 1px solid black;
   padding-bottom: 1rem;
   margin-bottom: 1.618rem;
+
 }
 
 header.navbar {
   border-radius: 0;
 }
 
+/*ul{
+  float: right;
+  display: inline-block;
+}*/
+
 h1 {
   font-weight: bold;
   letter-spacing: -2px;
   max-width: 100px;
+  display: inline-block;
 }
 h1:after, .card h6:after {
   content: "™";
@@ -64,4 +71,8 @@ footer {
 }
 footer .heart {
   color:#cf2e31;
+}
+#points{
+  display: inline-block;
+  float: right;
 }
